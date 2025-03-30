@@ -1,77 +1,64 @@
-# Multipdf Chat App
+# MultiPDF Chat App
 
-## Overview
-The **Multipdf Chat App** is a web application that allows users to upload multiple PDF files and engage in a chat about their content. The app leverages advanced natural language processing (NLP) models to extract and summarize information from the uploaded PDFs, enabling users to have meaningful discussions based on the document content.
 
-## Technologies Used
-- **Frontend**: 
-  - **React**: A JavaScript library for building user interfaces, allowing for a dynamic and responsive user experience.
-  - **Bootstrap**: A CSS framework for styling the application and ensuring a mobile-friendly design.
+## Introduction
+------------
+The MultiPDF Chat App is a Python application that allows you to chat with multiple PDF documents. You can ask questions about the PDFs using natural language, and the application will provide relevant responses based on the content of the documents. This app utilizes a language model to generate accurate answers to your queries. Please note that the app will only respond to questions related to the loaded PDFs.
 
-- **Backend**:
-  - **Node.js**: A JavaScript runtime for building the server-side of the application.
-  - **Express**: A web application framework for Node.js, used to handle routing and server logic.
+## How It Works
+------------
 
-- **Database**:
-  - **MongoDB**: A NoSQL database used to store user data, chat history, and metadata about the uploaded PDFs.
+![MultiPDF Chat App Diagram](./docs/PDF-LangChain.jpg)
 
-- **NLP Model**:
-  - **Hugging Face Transformers**: The application utilizes models from the Hugging Face library, such as BERT or GPT, for natural language understanding and generation. These models help in extracting key information from the PDFs and generating responses in the chat.
+The application follows these steps to provide responses to your questions:
 
-## Features
-- **Upload Multiple PDFs**: Users can upload multiple PDF files at once.
-- **Chat Interface**: A real-time chat interface where users can discuss the content of the uploaded PDFs.
-- **NLP Integration**: The app uses NLP models to summarize PDF content and provide relevant responses during the chat.
-- **User Authentication**: Users can create accounts and log in to save their chat history and uploaded documents.
+1. PDF Loading: The app reads multiple PDF documents and extracts their text content.
 
-## Installation
-To get a local copy up and running, follow these simple steps:
+2. Text Chunking: The extracted text is divided into smaller chunks that can be processed effectively.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Sowmyadevalla2005/Multipdf-chat-app.git
+3. Language Model: The application utilizes a language model to generate vector representations (embeddings) of the text chunks.
+
+4. Similarity Matching: When you ask a question, the app compares it with the text chunks and identifies the most semantically similar ones.
+
+5. Response Generation: The selected chunks are passed to the language model, which generates a response based on the relevant content of the PDFs.
+
+## Dependencies and Installation
+----------------------------
+To install the MultiPDF Chat App, please follow these steps:
+
+1. Clone the repository to your local machine.
+
+2. Install the required dependencies by running the following command:
+   ```
+   pip install -r requirements.txt
    ```
 
-2. Navigate to the project directory:
-   ```bash
-   cd Multipdf-chat-app
-   ```
-
-3. Install the required dependencies:
-   ```bash
-   npm install  # For Node.js dependencies
-   ```
-
-4. Set up your environment variables:
-   - Create a `.env` file in the root directory and add your environment variables (e.g., API keys, database URLs).
-
-## Usage
-To run the application, use the following command:
-
-```bash
-npm start  # Start the server
+3. Obtain an API key from OpenAI and add it to the `.env` file in the project directory.
+```commandline
+OPENAI_API_KEY=your_secrit_api_key
 ```
 
-Open your browser and navigate to `http://localhost:3000` to access the app.
+## Usage
+-----
+To use the MultiPDF Chat App, follow these steps:
+
+1. Ensure that you have installed the required dependencies and added the OpenAI API key to the `.env` file.
+
+2. Run the `main.py` file using the Streamlit CLI. Execute the following command:
+   ```
+   streamlit run app.py
+   ```
+
+3. The application will launch in your default web browser, displaying the user interface.
+
+4. Load multiple PDF documents into the app by following the provided instructions.
+
+5. Ask questions in natural language about the loaded PDFs using the chat interface.
 
 ## Contributing
-Contributions are welcome! Please follow these steps to contribute:
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+------------
+This repository is intended for educational purposes and does not accept further contributions. It serves as supporting material for a YouTube tutorial that demonstrates how to build this project. Feel free to utilize and enhance the app based on your own requirements.
 
 ## License
-Distributed under the MIT License. See `LICENSE` for more information.
-
-## Acknowledgements
-- [Hugging Face](https://huggingface.co/) for providing powerful NLP models.
-- [React](https://reactjs.org/) for building the user interface.
-- [Node.js](https://nodejs.org/) and [Express](https://expressjs.com/) for the backend server.
-
-## Contact
-Your Name - [your.email@example.com](mailto:your.email@example.com)
-
-Project Link: [https://github.com/Sowmyadevalla2005/Multipdf-chat-app](https://github.com/Sowmyadevalla2005/Multipdf-chat-app)
+-------
+The MultiPDF Chat App is released under the [MIT License](https://opensource.org/licenses/MIT).
